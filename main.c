@@ -1,26 +1,32 @@
-#include <math.h>
 #include <stdio.h>
 int main()
 {
-    int g;
-    double P, S, r;
-    printf("Krug--(1)\ntriangle--(2):\n");
-    scanf("%d", &g);
-    if (g == 1) {
-        printf("Vvedite radius:");
-        scanf("%lf", &r);
-        S = 3.14 * r * r;
-        P = 2 * 3.14 * r;
-        printf("S=%lf P=%lf", S, P);
-    }
-    double a, b, c, P1;
-    if (g == 2) {
-        printf("Vvedite storonu:");
-        scanf("%lf %lf %lf", &a, &b, &c);
-        P = a + b + c;
-        P1 = P / 2;
-        S = sqrt(P1 * (P1 - a) * (P1 - b) * (P1 - c));
-        printf("S=%lf P=%lf", S, P);
-    }
+    FILE* TXT;
+    char n[20];
+    char* an;
+    TXT = fopen("geometry.txt", "r");
+    if (TXT == 0) {
+        printf("Oshibka\n");
+        return 0;
+    } else
+        printf("Schitany stroki:\n");
+    do {
+        an = fgets(n, sizeof(n), TXT);
+        if (an == NULL) {
+            if (getc(TXT) != 0) {
+                printf("Chtenie fajla 'geometry' zakoncheno\n");
+                break;
+            } else {
+                printf("\nOshibka fajla 'geometry'\n");
+                break;
+            }
+        }
+        printf("%s", n);
+    } while (1);
+    printf("Rezul'tat:");
+    if (fclose(TXT) == 1)
+        printf("Oshibka\n");
+    else
+        printf("Vypolneno\n");
     return 0;
 }
