@@ -1,32 +1,48 @@
+#include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int FF(const int size, char buff[], int i)
+{
+    for (; i < size; i++) {
+        if (buff[i] == ' ') {
+            continue;
+        } else {
+            break;
+        }
+    }
+    return i;
+}
 int main()
 {
-    FILE* TXT;
-    char n[20];
-    char* an;
-    TXT = fopen("geometry.txt", "r");
-    if (TXT == 0) {
-        printf("Oshibka\n");
-        return 0;
-    } else
-        printf("Schitany stroki:\n");
-    do {
-        an = fgets(n, sizeof(n), TXT);
-        if (an == NULL) {
-            if (getc(TXT) != 0) {
-                printf("Chtenie fajla 'geometry' zakoncheno\n");
-                break;
-            } else {
-                printf("\nOshibka fajla 'geometry'\n");
-                break;
-            }
+    const int size = 30;
+    char buff[size];
+    fgets(buff, size, stdin);
+    int i = 0;
+    i = FF(size, buff, i);
+    if (i >= size) {
+        printf("oshibka");
+        return 1;
+    }
+    const char circle[] = "circle";
+    for (int g = 0; g < 6; g++, i++) {
+        if (tolower(buff[i]) == circle[g]) {
+            continue;
+        } else {
+            printf("oshibka");
+            return 1;
         }
-        printf("%s", n);
-    } while (1);
-    printf("Rezul'tat:");
-    if (fclose(TXT) == 1)
-        printf("Oshibka\n");
-    else
-        printf("Vypolneno\n");
-    return 0;
+    }
+    i = FF(size, buff, i);
+    if (i >= size) {
+        printf("oshibka");
+        return 1;
+    }
+    float x, y, r;
+    if (3 == sscanf(buff + i, "(%f %f, %f)\n", &x, &y, &r)) {
+        printf(" x = %f y = %f R = %f\n", x, y, r);
+        printf("Circle\n");
+    } else {
+        printf("oshibka");
+    }
 }
