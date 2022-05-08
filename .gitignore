@@ -1,3 +1,4 @@
-*main
-*~
-*.[oa]
+*.o
+*.a
+*.d
+bin/main
