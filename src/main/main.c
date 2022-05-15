@@ -57,23 +57,20 @@ int main()
                        radius[1]);
                 printf("P1 = %.2f\n", P1(radius));
                 printf("S1 = %.2f\n", S1(radius));
-            } 
-        }
-        else {
-                printf("Incorrect input of coordinates\n");
-                return 2;
             }
-    
-    povtor--;
-    if (povtor == 0) 
-        continue;
+        } else {
+            printf("Incorrect input of coordinates\n");
+            return 2;
+        }
+
+        povtor--;
+        if (povtor == 0)
+            continue;
     }
 
-
-for (int j = 0; j < c; j++) {
-    if (c > 0)
-        intersect(j, c, xp, yp, radius);
+    for (int j = 0; j < c; j++) {
+        if (c > 0)
+            intersect(j, c, xp, yp, radius);
+    }
+    return 3;
 }
-return 3;
-}
-
