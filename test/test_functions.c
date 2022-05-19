@@ -38,18 +38,12 @@ CTEST(suite1, P1_circle)
     ASSERT_DBL_NEAR(exp, res);
 }
 
-CTEST(suite2, intersect)
+CTEST(suite2, peresechenie)
 {
     xp[0] = 5, yp[0] = 5, radius[0] = 5;
     xp[1] = 6, yp[1] = 6, radius[1] = 5;
-    int j = 0, c = 1, res = 0;
+    int j = 0, c = 1, p = 0;
     int exp = 1;
-    for (int k = 0; k <= c; k++) {
-        if (k == j)
-            continue;
-        float d = fabs(sqrt(pow((xp[k] - xp[j]), 2) + pow((yp[k] - yp[j]), 2)));
-        if (d <= (radius[j] + radius[k]))
-            res++;
-    }
-    ASSERT_EQUAL(exp, res);
+    p = peresechenie(j, c, xp, yp, radius);
+    ASSERT_EQUAL(exp, p);
 }
