@@ -47,7 +47,7 @@ float P1(float radius[])
     return P1;
 }
 
-void intersect(int j, int c, float xp[], float yp[], float radius[])
+int peresechenie(int j, int c, float xp[], float yp[], float radius[])
 {
     float d;
     int g = 0;
@@ -60,8 +60,10 @@ void intersect(int j, int c, float xp[], float yp[], float radius[])
             g++;
     }
     if (g > 0) {
-        printf("\nintersect: ");
-        for (int i = 0; i < g; i++)
-            printf("\n%s\n", figure);
+        printf("\nperesechenie: ");
+        printf("\n%s\n", figure);
+        return 1;
+    } else {
+        return 0;
     }
 }
