@@ -5,4 +5,4 @@ float S(float*);
 float P(float*);
 float S1(float*);
 float P1(float*);
-void intersect(int j, int c, float xp[], float yp[], float radius[]);
+int peresechenie(int j, int c, float xp[], float yp[], float radius[]);
