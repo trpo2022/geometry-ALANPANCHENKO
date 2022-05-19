@@ -70,7 +70,7 @@ int main()
 
     for (int j = 0; j < c; j++) {
         if (c > 0)
-            intersect(j, c, xp, yp, radius);
+            peresechenie(j, c, xp, yp, radius);
     }
     return 3;
 }
